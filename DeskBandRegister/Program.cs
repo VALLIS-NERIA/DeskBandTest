@@ -7,8 +7,10 @@ using System.Threading.Tasks;
 using DeskBandRegister.Properties;
 
 namespace DeskBandRegister {
+    using System.Diagnostics;
+
     class Program {
-        static void ExtractTool() {
+        static string ExtractTool() {
             var dir = Path.GetTempPath();
             var exePath = dir + "regasm.exe";
             var cfgPath = dir + "regasm.exe.config";
@@ -23,11 +25,20 @@ namespace DeskBandRegister {
                     s.Write(Resources.regasm_exe, 0, Resources.regasm_exe.Length);
                 }
             }
+
+            return exePath;
         }
 
         static void Main(string[] args) {
-            ExtractTool();
-
+            if (args.Length < 1) return;
+            var exe = ExtractTool();
+            string dll = args[0];
+            var process = new Process();
+            process.StartInfo.Arguments = $"/codebase {dll}";
+            process.StartInfo.FileName = exe;
+            process.StartInfo.UseShellExecute = true;
+            process.StartInfo.Verb = "runas";
+            process.Start();
         }
     }
 }
