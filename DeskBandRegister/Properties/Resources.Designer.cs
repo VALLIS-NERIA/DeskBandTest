@@ -89,5 +89,15 @@ namespace DeskBandRegister.Properties {
                 return ((byte[])(obj));
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
+        internal static byte[] restart_explorer {
+            get {
+                object obj = ResourceManager.GetObject("restart_explorer", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
     }
 }
