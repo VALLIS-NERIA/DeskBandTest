@@ -8,7 +8,8 @@
                         mc:Ignorable="d"
                         DataContext="{Binding RelativeSource={RelativeSource Self}}"
                         d:DesignHeight="450" d:DesignWidth="800" Foreground="White">
-    <WrapPanel HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Orientation="{Binding TaskbarOrientation}">
+
+    <WrapPanel HorizontalAlignment="Center" VerticalAlignment="Center" Orientation="{Binding TaskbarOrientation}">
 
         <GroupBox Header="Dice" VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
             <StackPanel x:Name="DicePanel" Orientation="{Binding TaskbarOrientation}" HorizontalAlignment="Stretch"
@@ -20,12 +21,37 @@
             </StackPanel>
         </GroupBox>
         <GroupBox Header="Result" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" MinWidth="50">
-            <StackPanel Orientation="{Binding TaskbarOrientation}" HorizontalAlignment="Stretch"
-                        VerticalAlignment="Stretch">
-                <Button Content="Button" VerticalAlignment="Stretch" Click="Roll" HorizontalAlignment="Left" />
-                <Label ContentStringFormat="Width: {0}" Content="{Binding LastResult}" HorizontalAlignment="Center"
-                       Margin="0" VerticalAlignment="Center" Foreground="White" />
-            </StackPanel>
+            <!--<StackPanel Orientation="{Binding TaskbarOrientation}" HorizontalAlignment="Center"
+                        VerticalAlignment="Center">-->
+            <Label Content="{Binding LastResult, NotifyOnTargetUpdated=True}" HorizontalAlignment="Stretch"
+                   Margin="0" VerticalAlignment="Stretch" HorizontalContentAlignment="Center" Foreground="White"
+                   FontSize="16">
+                <Label.Triggers>
+                    <EventTrigger RoutedEvent="Binding.TargetUpdated">
+                        <BeginStoryboard>
+                            <Storyboard>
+                                <ColorAnimation
+                                    Storyboard.TargetProperty="(Label.Background).(SolidColorBrush.Color)"
+                                    BeginTime="00:00:00" To="Gray"
+                                    Duration="00:00:0.2" />
+                                <ColorAnimation
+                                    Storyboard.TargetProperty="(Label.Background).(SolidColorBrush.Color)"
+                                    BeginTime="00:00:0.2" To="Transparent"
+                                    Duration="00:00:0.4" />
+                                <ColorAnimation
+                                    Storyboard.TargetProperty="(Label.Foreground).(SolidColorBrush.Color)"
+                                    BeginTime="00:00:00" To="Yellow"
+                                    Duration="00:00:0.2" />
+                                <ColorAnimation
+                                    Storyboard.TargetProperty="(Label.Foreground).(SolidColorBrush.Color)"
+                                    BeginTime="00:00:0.2" To="White"
+                                    Duration="00:00:0.4" />
+                            </Storyboard>
+                        </BeginStoryboard>
+                    </EventTrigger>
+                </Label.Triggers>
+            </Label>
+            <!--</StackPanel>-->
         </GroupBox>
     </WrapPanel>
 </deskband:CSDeskBandWpf>

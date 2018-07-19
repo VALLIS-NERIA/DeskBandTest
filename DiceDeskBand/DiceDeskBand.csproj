@@ -52,9 +52,6 @@
     <Reference Include="CSDeskBand, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\CSDeskBand.1.0.0\lib\net461\CSDeskBand.dll</HintPath>
     </Reference>
-    <Reference Include="CSDeskBand.Wpf, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\CSDeskBand.Wpf.1.1.1\lib\net461\CSDeskBand.Wpf.dll</HintPath>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
@@ -82,6 +79,7 @@
     <Compile Include="DiceButton.xaml.cs">
       <DependentUpon>DiceButton.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Settings.cs" />
     <Compile Include="UserControl1.xaml.cs">
       <DependentUpon>UserControl1.xaml</DependentUpon>
       <SubType>Code</SubType>
@@ -110,6 +108,12 @@
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\CSDeskBand.Wpf\CSDeskband.Wpf.csproj">
+      <Project>{3bee7144-7e4e-44f6-9c36-b147d15f944f}</Project>
+      <Name>CSDeskband.Wpf</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

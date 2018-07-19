@@ -114,10 +114,19 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\CSDeskBand.Wpf\CSDeskband.Wpf.csproj">
+      <Project>{3bee7144-7e4e-44f6-9c36-b147d15f944f}</Project>
+      <Name>CSDeskband.Wpf</Name>
+    </ProjectReference>
     <ProjectReference Include="..\DiceDeskBand\DiceDeskBand.csproj">
       <Project>{14a01b0c-1ba3-47b4-9d1a-45b99c70ef07}</Project>
       <Name>DiceDeskBand</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="CSDeskBand">
+      <Version>1.0.0</Version>
+    </PackageReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

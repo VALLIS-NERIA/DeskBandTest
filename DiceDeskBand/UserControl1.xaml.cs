@@ -6,6 +6,7 @@ using System.Windows;
 using System.Windows.Controls;
 using CSDeskBand;
 using CSDeskBand.Annotations;
+using System.Linq;
 
 namespace DiceDeskBand {
     using System.Windows.Data;
@@ -66,18 +67,29 @@ namespace DiceDeskBand {
             }
         }
 
-        protected int DiceShape { get; set; } = 6;
-        private Random rnd = new Random();
+
         private int lastResult = 0;
 
         public UserControl1() {
             InitializeComponent();
             this.Options.MinHorizontal.Width = 150;
+            var dices = Settings.LoadDices();
+            foreach (var info in dices) {
+                this.DicePanel.Children.Add(
+                    new DiceButton(info)
+                    {
+                        Content = new Binding
+                        {
+                            RelativeSource = RelativeSource.Self,
+                            Path = new PropertyPath("Description")
+                        }
+                    });
+            }
         }
 
-        private void AddDiceButton(int x, int d) {
+        private void AddMoreDiceButton(DiceInfo info) {
             this.DicePanel.Children.Add(
-                new DiceButton(x, d)
+                new DiceButton(info)
                 {
                     Content = new Binding
                     {
@@ -85,6 +97,7 @@ namespace DiceDeskBand {
                         Path = new PropertyPath("Description")
                     }
                 });
+            Settings.SaveDices(info);
         }
 
         private void Roll(object sender, RoutedEventArgs e) {

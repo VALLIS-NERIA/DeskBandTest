@@ -108,15 +108,13 @@ namespace DeskBandRegister {
             if (args.Length < 1) return;
             var options = new Options();
 
-            Parser.Default.ParseArguments(args, options) ;
+            //Parser.Default.ParseArguments(args, options);
             ;
             CleanTemp();
             string dll = args.Last();
             var exe = ExtractTool();
             UnRegister(exe, dll);
             KillExplorer();
-            //Thread.Sleep(5000);
-            //Process.Start("explorer");
             //Register(exe, dll);
             try {
                 CleanTemp();

@@ -53,6 +53,8 @@ namespace DiceDeskBand
             this.DiceD = diceDimension;
         }
 
+        public DiceButton(DiceInfo info) : this(info.DiceCount, info.DiceDimension) { }
+
         public int Roll() {
             int sum = 0;
             for (int i = 0; i < this.DiceCount; i++) {
