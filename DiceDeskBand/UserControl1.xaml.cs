@@ -75,15 +75,11 @@ namespace DiceDeskBand {
             this.Options.MinHorizontal.Width = 150;
             var dices = Settings.LoadDices();
             foreach (var info in dices) {
+                var button = new DiceButton(info);
+                button.SetBinding(ContentProperty, new Binding { RelativeSource = RelativeSource.Self, Path = new PropertyPath("Description") });
+                button.Click += this.Roll;
                 this.DicePanel.Children.Add(
-                    new DiceButton(info)
-                    {
-                        Content = new Binding
-                        {
-                            RelativeSource = RelativeSource.Self,
-                            Path = new PropertyPath("Description")
-                        }
-                    });
+                    button);
             }
         }
 

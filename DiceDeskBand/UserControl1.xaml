@@ -13,10 +13,11 @@
 
         <GroupBox Header="Dice" VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
             <StackPanel x:Name="DicePanel" Orientation="{Binding TaskbarOrientation}" HorizontalAlignment="Stretch"
-                        VerticalAlignment="Stretch">
-                <local:DiceButton DiceCount="1" DiceD="20"
+                        VerticalAlignment="Stretch" FlowDirection="RightToLeft">
+                <!--<local:DiceButton DiceCount="1" DiceD="20"
                                   Content="{Binding RelativeSource={RelativeSource Self}, Path=Description}"
-                                  VerticalAlignment="Stretch" Click="Roll" HorizontalAlignment="Left" />
+                                  VerticalAlignment="Stretch" Click="Roll" HorizontalAlignment="Left" />-->
+                <!--<Button Content="Add" VerticalAlignment="Stretch" HorizontalAlignment="Right" />-->
 
             </StackPanel>
         </GroupBox>
